@@ -84,12 +84,21 @@
       }
     }
 
+    let playAgain;
+
     // Plays one round of rock, paper, scissors
     function playGame() {
       generateComputerMove();
       getUserMove();
       determineGameResult();
-      console.log(`Computer chose ${computerMove}. ${result}`);
+      alert(`Computer chose ${computerMove}. ${result}`);
+
+      // Ask user if they would like to play again
+      playAgain = prompt("Would you like to play again? Answer yes or no.");
+      playAgain.toLowerCase();
+      if(playAgain == "yes") {
+        playGame();
+      }
     }
 
     playGame();
