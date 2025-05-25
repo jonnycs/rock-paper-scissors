@@ -23,9 +23,22 @@
       }
     }
 
-      // Gets user move
-      let userMove = prompt("Pick your move!");
-      let result;
+    // Gets the users move and checks that the move is valid
+      function getUserMove() {
+        let userMove = prompt("Pick your move!");
+        userMove = userMove.toLowerCase();
+
+        // Check for valid move
+        while(
+          userMove !== "rock" &&
+          userMove !== "paper" &&
+          userMove !== "scissors")
+        {
+          userMove = prompt("Invalid move. Pick either rock, paper or scissors.")
+          userMove = userMove.toLowerCase();
+        }
+    }
+
 
       if (userMove == "Rock" || userMove == "Paper" || userMove == "Scissors" || userMove == "rock" || userMove == "paper" || userMove == "scissors") {
       switch(userMove) {
