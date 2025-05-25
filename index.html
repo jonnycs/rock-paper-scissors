@@ -13,13 +13,13 @@
       function generateComputerMove() {
       getComputerMove = Math.floor(Math.random() * 3);
       if(getComputerChoice == 0) {
-        computerMove = "Rock";
+        computerMove = "rock";
       }
       else if(getComputerChoice == 1) {
-        computerMove = "Paper";
+        computerMove = "paper";
       }
       else if(getComputerChoice == 2) {
-        computerMove = "Scissors";
+        computerMove = "scissors";
       }
     }
 
@@ -39,52 +39,45 @@
         }
     }
 
-
-      if (userMove == "Rock" || userMove == "Paper" || userMove == "Scissors" || userMove == "rock" || userMove == "paper" || userMove == "scissors") {
+    // Determines the winner of the game
+    function determineGameResult() {
       switch(userMove) {
-        case "Rock":
         case "rock":
-          if(computerMove == "Rock") {
+          if(computerMove == "rock") {
             result = "You draw";
           }
-          else if(computerMove == "Paper") {
+          else if(computerMove == "paper") {
             result = "You lose";
           }
-          else if(computerMove == "Scissors") {
+          else if(computerMove == "scissors") {
             result = "You win";
           }
           break;
 
-        case "Paper":
         case "paper":
-          if(computerMove == "Rock") {
+          if(computerMove == "rock") {
             result = "You win";
           }
-          else if(computerMove == "Paper") {
+          else if(computerMove == "paper") {
             result = "You draw";
           }
-          else if(computerMove == "Scissors") {
+          else if(computerMove == "scissors") {
             result = "You lose";
           }
           break;
 
-        case "Scissors":
         case "scissors":
-          if(computerMove == "Rock") {
+          if(computerMove == "rock") {
             result = "You lose";
           }
-          else if(computerMove == "Paper") {
+          else if(computerMove == "paper") {
             result = "You win";
           }
-          else if(computerMove == "Scissors") {
+          else if(computerMove == "scissors") {
             result = "You draw";
           }
           break;
       }
-    }
-    else {
-      console.log("Invalid move");
-      userMove = prompt("Pick your move!")
     }
 
     console.log(`Computer chose ${computerMove}. ${result}`);
