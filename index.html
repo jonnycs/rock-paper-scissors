@@ -42,6 +42,9 @@
     }
 
     let result;
+    let wins = 0;
+    let losses = 0;
+    let draws = 0;
 
     // Determines the winner of the game
     function determineGameResult() {
@@ -49,36 +52,45 @@
         case "rock":
           if(computerMove == "rock") {
             result = "You draw";
+            draws++;
           }
           else if(computerMove == "paper") {
             result = "You lose";
+            losses++;
           }
           else if(computerMove == "scissors") {
             result = "You win";
+            wins++;
           }
           break;
 
         case "paper":
           if(computerMove == "rock") {
             result = "You win";
+            wins++;
           }
           else if(computerMove == "paper") {
             result = "You draw";
+            draws++;
           }
           else if(computerMove == "scissors") {
             result = "You lose";
+            losses++;
           }
           break;
 
         case "scissors":
           if(computerMove == "rock") {
             result = "You lose";
+            losses++;
           }
           else if(computerMove == "paper") {
             result = "You win";
+            wins++;
           }
           else if(computerMove == "scissors") {
             result = "You draw";
+            draws++;
           }
           break;
       }
@@ -92,6 +104,7 @@
       getUserMove();
       determineGameResult();
       alert(`Computer chose ${computerMove}. ${result}`);
+      console.log(`${wins} wins. ${losses} losses. ${draws} draws.`);
 
       // Ask user if they would like to play again
       playAgain = prompt("Would you like to play again? Answer yes or no.");
