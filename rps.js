@@ -104,10 +104,20 @@
       resultsParagraph.textContent = `Computer chose ${computerMove}. ${result}`;
     }
 
+    let scoreParagraph;
+
+    function displayScore() {
+      if (scoreParagraph === undefined) {
+      scoreParagraph = document.createElement('p');
+      document.body.appendChild(scoreParagraph);
+      }
+      scoreParagraph.textContent = `${wins} wins   ${losses} losses   ${draws} draws`;
+    }
+
     // Plays one round of rock, paper, scissors. Called when user clicks a move button.
     function playGame() {
       generateComputerMove();
       determineGameResult();
       displayGameResults();
-      console.log(result);
+      displayScore();
     }
