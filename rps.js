@@ -17,21 +17,26 @@
     
     let userMove;
 
-    // Gets the users move and checks that the move is valid
-      function getUserMove() {
-        userMove = prompt("Pick your move!");
-        userMove = userMove.toLowerCase();
 
-        // Check for valid move
-        while(
-          userMove !== "rock" &&
-          userMove !== "paper" &&
-          userMove !== "scissors")
-        {
-          userMove = prompt("Invalid move. Pick either rock, paper or scissors.")
-          userMove = userMove.toLowerCase();
-        }
-    }
+    let rockBtn = document.querySelector('.rock-btn');
+
+    rockBtn.addEventListener('click', () => {
+      userMove = 'rock';
+    });
+
+    let paperBtn = document.querySelector('.paper-btn');
+
+    paperBtn.addEventListener('click', () => {
+      userMove = 'paper';
+
+    });
+
+    let scissorsBtn = document.querySelector('.scissors-btn');
+
+    scissorsBtn.addEventListener('click', () => {
+      userMove = 'scissors';
+    });
+    
 
     let result;
     let wins = 0;
