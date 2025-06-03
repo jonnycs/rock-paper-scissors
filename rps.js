@@ -114,10 +114,22 @@
       scoreParagraph.textContent = `${wins} wins   ${losses} losses   ${draws} draws`;
     }
 
+    let gameWinner;
+
+    function determineWinner() {
+      if (wins > losses) {
+        gameWinner = '🎉 You won the game!'
+      }
+      else if (wins < losses) {
+        gameWinner = '💻 The computer wins this time.'
+      }
+    }
+
     // Plays one round of rock, paper, scissors. Called when user clicks a move button.
     function playGame() {
       generateComputerMove();
       determineGameResult();
       displayGameResults();
       displayScore();
+      determineWinner();
     }
