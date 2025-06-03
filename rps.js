@@ -22,8 +22,6 @@
       playGame();
     });
 
-
-
     // Gets computer move by generating a random number between 0 - 2 then convert the number to rock, paper or scissors
     let getComputerMove;
     let computerMove;
@@ -40,7 +38,6 @@
       computerMove = "scissors";
     }
   }
-    
 
     // Determines the winner of the game
     let result;
@@ -97,10 +94,20 @@
       }
     }
 
+    let resultsParagraph;
+
+    function displayGameResults() {
+      if (resultsParagraph === undefined) {
+        resultsParagraph = document.createElement('p');
+        document.body.appendChild(resultsParagraph);
+      }
+      resultsParagraph.textContent = `Computer chose ${computerMove}. ${result}`;
+    }
+
     // Plays one round of rock, paper, scissors. Called when user clicks a move button.
     function playGame() {
       generateComputerMove();
       determineGameResult();
-      alert(`Computer chose ${computerMove}. ${result}`);
-      console.log(`${wins} wins. ${losses} losses. ${draws} draws.`);
+      displayGameResults();
+      console.log(result);
     }
