@@ -1,0 +1,101 @@
+      let getComputerMove;
+      let computerMove;
+
+      // Gets computer move by generating a random number between 0 - 2 then convert the number to rock, paper or scissors
+      function generateComputerMove() {
+      getComputerMove = Math.floor(Math.random() * 3);
+      if(getComputerMove == 0) {
+        computerMove = "rock";
+      }
+      else if(getComputerMove == 1) {
+        computerMove = "paper";
+      }
+      else if(getComputerMove == 2) {
+        computerMove = "scissors";
+      }
+    }
+    
+    let userMove;
+
+    // Gets the users move and checks that the move is valid
+      function getUserMove() {
+        userMove = prompt("Pick your move!");
+        userMove = userMove.toLowerCase();
+
+        // Check for valid move
+        while(
+          userMove !== "rock" &&
+          userMove !== "paper" &&
+          userMove !== "scissors")
+        {
+          userMove = prompt("Invalid move. Pick either rock, paper or scissors.")
+          userMove = userMove.toLowerCase();
+        }
+    }
+
+    let result;
+    let wins = 0;
+    let losses = 0;
+    let draws = 0;
+
+    // Determines the winner of the game
+    function determineGameResult() {
+      switch(userMove) {
+        case "rock":
+          if(computerMove == "rock") {
+            result = "You draw";
+            draws++;
+          }
+          else if(computerMove == "paper") {
+            result = "You lose";
+            losses++;
+          }
+          else if(computerMove == "scissors") {
+            result = "You win";
+            wins++;
+          }
+          break;
+
+        case "paper":
+          if(computerMove == "rock") {
+            result = "You win";
+            wins++;
+          }
+          else if(computerMove == "paper") {
+            result = "You draw";
+            draws++;
+          }
+          else if(computerMove == "scissors") {
+            result = "You lose";
+            losses++;
+          }
+          break;
+
+        case "scissors":
+          if(computerMove == "rock") {
+            result = "You lose";
+            losses++;
+          }
+          else if(computerMove == "paper") {
+            result = "You win";
+            wins++;
+          }
+          else if(computerMove == "scissors") {
+            result = "You draw";
+            draws++;
+          }
+          break;
+      }
+    }
+
+    // Plays one round of rock, paper, scissors
+    function playGame() {
+      generateComputerMove();
+      getUserMove();
+      determineGameResult();
+      alert(`Computer chose ${computerMove}. ${result}`);
+      console.log(`${wins} wins. ${losses} losses. ${draws} draws.`);
+      playGame();
+    }
+
+    playGame();
