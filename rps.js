@@ -1,49 +1,53 @@
-      let getComputerMove;
-      let computerMove;
-
-      // Gets computer move by generating a random number between 0 - 2 then convert the number to rock, paper or scissors
-      function generateComputerMove() {
-      getComputerMove = Math.floor(Math.random() * 3);
-      if(getComputerMove == 0) {
-        computerMove = "rock";
-      }
-      else if(getComputerMove == 1) {
-        computerMove = "paper";
-      }
-      else if(getComputerMove == 2) {
-        computerMove = "scissors";
-      }
-    }
-    
+    // Update userMove when user clicks a move selection button.
     let userMove;
-
 
     let rockBtn = document.querySelector('.rock-btn');
 
     rockBtn.addEventListener('click', () => {
       userMove = 'rock';
+      playGame();
     });
 
     let paperBtn = document.querySelector('.paper-btn');
 
     paperBtn.addEventListener('click', () => {
       userMove = 'paper';
-
+      playGame();
     });
 
     let scissorsBtn = document.querySelector('.scissors-btn');
 
     scissorsBtn.addEventListener('click', () => {
       userMove = 'scissors';
+      playGame();
     });
+
+
+
+    // Gets computer move by generating a random number between 0 - 2 then convert the number to rock, paper or scissors
+    let getComputerMove;
+    let computerMove;
+
+    function generateComputerMove() {
+    getComputerMove = Math.floor(Math.random() * 3);
+    if(getComputerMove == 0) {
+      computerMove = "rock";
+    }
+    else if(getComputerMove == 1) {
+      computerMove = "paper";
+    }
+    else if(getComputerMove == 2) {
+      computerMove = "scissors";
+    }
+  }
     
 
+    // Determines the winner of the game
     let result;
     let wins = 0;
     let losses = 0;
     let draws = 0;
 
-    // Determines the winner of the game
     function determineGameResult() {
       switch(userMove) {
         case "rock":
@@ -93,14 +97,10 @@
       }
     }
 
-    // Plays one round of rock, paper, scissors
+    // Plays one round of rock, paper, scissors. Called when user clicks a move button.
     function playGame() {
       generateComputerMove();
-      getUserMove();
       determineGameResult();
       alert(`Computer chose ${computerMove}. ${result}`);
       console.log(`${wins} wins. ${losses} losses. ${draws} draws.`);
-      playGame();
     }
-
-    playGame();
