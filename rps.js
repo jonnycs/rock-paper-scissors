@@ -115,13 +115,37 @@
     }
 
     let gameWinner;
+    let winnerParagraph;
+    let currentTotal = 0;
 
     function determineWinner() {
+      // Determines game results.
       if (wins > losses) {
         gameWinner = '🎉 You won the game!'
       }
       else if (wins < losses) {
         gameWinner = '💻 The computer wins this time.'
+      }
+      else {
+        gameWinner = '🤝 The game is a draw!';
+      }
+
+      // Displays game results if, wins + losses > 5.
+      currentTotal = wins + losses + draws;
+      
+        if (winnerParagraph === undefined) {
+          winnerParagraph = document.createElement('p');
+          document.body.appendChild(winnerParagraph);
+        }
+      winnerParagraph.textContent = `${gameWinner}`;
+
+      if (currentTotal > 5) {
+        document.body.removeChild(winnerParagraph);
+        winnerParagraph = undefined;
+        wins = 0;
+        losses = 0;
+        draws = 0;
+        scoreParagraph.textContent = `${wins} wins   ${losses} losses   ${draws} draws`
       }
     }
 
@@ -131,5 +155,7 @@
       determineGameResult();
       displayGameResults();
       displayScore();
-      determineWinner();
+      if (wins + losses + draws >= 5) {
+        determineWinner();
+      }
     }
