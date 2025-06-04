@@ -46,7 +46,7 @@
     let draws = 0;
 
     // Determines the winner of the game.
-    function determineMoveResult() {
+    function determineMoveResults() {
       switch(userMove) {
         case "rock":
           if(computerMove == "rock") {
