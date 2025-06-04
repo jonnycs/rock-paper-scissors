@@ -1,6 +1,7 @@
-    // Update userMove when user clicks a move selection button.
+
     let userMove;
 
+    // Update userMove when user clicks a move selection button.
     let rockBtn = document.querySelector('.rock-btn');
 
     rockBtn.addEventListener('click', () => {
@@ -22,7 +23,7 @@
       playGame();
     });
 
-    // Gets computer move by generating a random number between 0 - 2 then convert the number to rock, paper or scissors
+    // Gets computer move by generating a random number between 0 - 2 then convert the number to rock, paper or scissors.
     let getComputerMove;
     let computerMove;
 
@@ -39,13 +40,13 @@
     }
   }
 
-    // Determines the winner of the game
     let result;
     let wins = 0;
     let losses = 0;
     let draws = 0;
 
-    function determineGameResult() {
+    // Determines the winner of the game.
+    function determineMoveResult() {
       switch(userMove) {
         case "rock":
           if(computerMove == "rock") {
@@ -96,7 +97,8 @@
 
     let resultsParagraph;
 
-    function displayGameResults() {
+    // Displays the current user and computer move.
+    function displayMoves() {
       if (resultsParagraph === undefined) {
         resultsParagraph = document.createElement('p');
         document.body.appendChild(resultsParagraph);
@@ -118,7 +120,7 @@
     let winnerParagraph;
     let currentTotal = 0;
 
-    function determineWinner() {
+    function displayGameResults() {
       // Determines game results.
       if (wins > losses) {
         gameWinner = '🎉 You won the game!'
@@ -139,6 +141,7 @@
         }
       winnerParagraph.textContent = `${gameWinner}`;
 
+      // Reset the score after 5 moves.
       if (currentTotal > 5) {
         document.body.removeChild(winnerParagraph);
         winnerParagraph = undefined;
@@ -152,10 +155,10 @@
     // Plays one round of rock, paper, scissors. Called when user clicks a move button.
     function playGame() {
       generateComputerMove();
-      determineGameResult();
-      displayGameResults();
+      determineMoveResults();
+      displayMoves();
       displayScore();
       if (wins + losses + draws >= 5) {
-        determineWinner();
+        displayGameResults();
       }
     }
